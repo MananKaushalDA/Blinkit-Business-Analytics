@@ -7,17 +7,13 @@
 ===========================================================*/
 
 /*
-Business Question 1:
-Which payment methods are preferred by different customer segments?
+Business Question 1: Which payment methods are preferred by different customer segments?
 
-Objective:
-Analyze the payment preferences of each customer segment
-to understand customer purchasing behaviour and identify
-opportunities for targeted payment promotions.
+Objective: Analyze the payment preferences of each customer segment to understand customer purchasing behaviour and identify
+		   opportunities for targeted payment promotions.
 
-Tables Used:
-• customers
-• orders
+Tables Used: • customers 
+             • orders
 */
 
 -- SQL Query
@@ -49,7 +45,9 @@ Business Question 1: Which brands contribute the highest revenue to the business
 
 Objective: To identify highest revenue generating brands to support and prioritize various business operations
 
-Tables Used: order_items, product */
+Tables Used: • order_items 
+             • products
+*/
 
 -- SQL Query:
 
@@ -59,9 +57,7 @@ on products.product_id = order_items.product_id
 group by products.brand 
 order by Revenue Desc
 Limit 10;
-
 /* 
-/*
 Key Finding: • Chahal Group generated the highest revenue (₹18,807.72), followed by Sundaram Inc (₹16,962.66) and Gole-Doshi (₹16,931.66).
              • While the top few brands lead in revenue generation, the remaining brands have relatively closer revenue figures, indicating a competitive
 			   distribution among them.
@@ -77,9 +73,9 @@ Business Question 2 : Which high-revenue brands also offer high profit margins?
 
 Objective: To identify high revenue generating brands having highest profit margin from available dataset
 
-Tables Used: products
+Tables Used: • products
+             • order_items
 */
- 
  -- SQL Query
   
 Select products.brand as Brand_Name , Sum(order_items.quantity*order_items.unit_price) as Revenue, Avg(margin_percentage) as Profit_Margin from products 
@@ -108,7 +104,8 @@ Business Question 3 : Do brands offering higher average discounts also achieve h
 
 Objective: To identify average discounts by brands and how is it impacting their revenue contribution and profitability
 
-Tables Used: products , order_items
+Tables Used: • products 
+             • order_items
 */
  
  -- SQL Query
@@ -141,7 +138,8 @@ Business Question 1: Which products experience the highest damaged stock?
 
 Objective: Identify products with the highest damaged inventory to help reduce inventory losses and improve warehouse handling practices.
 
-Tables Used: products , inventory
+Tables Used: • products  
+             • inventory
 
 */
 
@@ -171,9 +169,10 @@ Recommendations: • Conduct a root-cause analysis for products with consistentl
 /*
 Business Question 2: Which products have the smallest inventory buffer and are most vulnerable to stock shortages?
 
-Obkective: To identify products with the smallest inventory buffer so that inventory planners can reduce the risk of stockouts and improve product availability.
+Objective: To identify products with the smallest inventory buffer so that inventory planners can reduce the risk of stockouts and improve product availability.
  
-Tables Used: products, inventory
+Tables Used: • products
+			 • inventory
 
 */
 
@@ -208,7 +207,8 @@ Business Question 3: Which brands receive the highest inventory replenishment an
 
 Objective: To analyze inventory replenishment across brands and understand whether brands receiving more stock also maintain higher available inventory.
 
-Tables Used: products, inventory
+Tables Used: • products 
+             • inventory
 */
 
 -- SQL Query
@@ -237,7 +237,8 @@ Business Question 4: Which product categories experience the highest inventory l
 
 Objective: To identify product categories with the highest percentage of damaged inventory so that inventory losses can be reduced.
 
-Tables Used: products, inventory
+Tables Used: • products 
+             • inventory
 */
 
 -- SQL Query
@@ -272,6 +273,7 @@ Recommendations: • Review storage and handling procedures for categories with 
    
    Objective: To identify the feedback categories with the lowest average customer ratings so that improvement efforts can be focused 
               on the areas causing the greatest customer dissatisfaction.
+              
    Tables Used: customer_feedback
    
 */
@@ -297,8 +299,7 @@ Recommendations: • Regularly monitor customer feedback related to Product Qual
 /*
 Business Question 2: How does delivery status affect customer ratings?
 
-Objective:
-To analyze whether delivery performance has an impact on customer satisfaction.
+Objective: To analyze whether delivery performance has an impact on customer satisfaction.
 
 Tables Used:• customer_feedback
             • delivery_performance
@@ -327,8 +328,8 @@ Business Interpretation: • Significant delivery delays have a noticeable negat
 
 Recommendations: • Focus on reducing significantly delayed deliveries by improving delivery planning and route management.
 				 • Prioritize identifying the causes of major delivery delays, as reducing them can directly improve customer satisfaction.
-                 
-			/*
+*/                 
+/*
 Business Question 3: How does customer sentiment relate to customer ratings?
 
 Objective: To analyze whether customer sentiment aligns with the ratings provided by customers.
@@ -442,35 +443,9 @@ Recommendations: • Continue targeting inactive customers through re-engagement
                  • Regularly compare campaign performance across different audience segments to improve marketing efficiency.
 */
 
-/*
-Business Question 3: Which target audience generates the highest revenue?
-
-Objective: To identify the customer segments contributing the highest marketing revenue and support better campaign targeting.
-
-Tables Used: marketing_performance
-
-*/
-
--- SQL QUERY
-
-select target_audience,round(sum(revenue_generated),2) as Total_Revenue,round(sum(spend),2) as Total_Spend,round(avg(roas),2) as Average_ROAS
-from marketing_performance
-group by target_audience
-order by Total_Revenue desc;
 
 /*
-Key Findings: • Inactive customers generated the highest revenue (₹14,11,006), followed closely by Premium customers (₹13,75,488).
-              • Campaigns targeting all customers achieved the highest average ROAS (2.80), indicating the best return on marketing spend.
-              • The difference in revenue and ROAS across all target audiences is relatively small, suggesting that each audience segment performs similarly.
-              
-Business Interpretation: • Different target audiences perform well on different metrics. 
-                         • While Inactive customers generate the highest revenue, campaigns targeting all customers provide the highest return on marketing spend.
-                         • Since the differences are not significant, target audience selection should also depend on the objective of the campaign 
-						   whether it is to maximize revenue or improve marketing efficiency.
-                           
-*/
-/*
-Business Question 4: Does higher marketing spend always result in higher revenue generation?
+Business Question 3 : Does higher marketing spend always result in higher revenue generation?
 
 Objective: To evaluate whether campaigns with higher marketing investment consistently generate higher revenue.
 
@@ -497,5 +472,7 @@ Recommendations: • Allocate future marketing budgets based on campaign perform
                  • Study the strategies used in high-ROAS campaigns such as Email Campaign and Flash Sale to improve the performance of other campaigns.
                  • Regularly monitor campaign ROAS to ensure marketing investments generate maximum returns.
                  
-                 
+/*====================================================
+		 ADVANCED SQL ANALYSIS SECTION
+======================================================*/              
 

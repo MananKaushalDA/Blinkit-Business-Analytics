@@ -1,4 +1,3 @@
-# Blinkit-Business-Analytics
 # Blinkit Business Analytics
 
 A Power BI business analytics project built using a Blinkit dataset.

@@ -472,7 +472,4 @@ Recommendations: • Allocate future marketing budgets based on campaign perform
                  • Study the strategies used in high-ROAS campaigns such as Email Campaign and Flash Sale to improve the performance of other campaigns.
                  • Regularly monitor campaign ROAS to ensure marketing investments generate maximum returns.
                  
-/*====================================================
-		 ADVANCED SQL ANALYSIS SECTION
-======================================================*/              
 
